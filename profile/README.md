@@ -2,6 +2,8 @@
 
 Aura Knowledge is a public place for essays and research notes that should be easy for people to read, trace, and review.
 
+AURA stands for **Agentic Universal Records Architecture**. The name points to the technical model behind the garden: human-readable work backed by agent-readable records, provenance, and reviewable artifacts.
+
 The public site is the front door for people. The repositories stay public so the claims, sources, review workflow, and generated machine-readable packets behind the work can be inspected.
 
 ## Start here
