@@ -1,52 +1,53 @@
 # Aura Knowledge
 
-Aura Knowledge is a public place for essays and research notes that should be easy for people to read, trace, and review.
-
-The public site is the front door for people. The repositories stay public so the claims, sources, review workflow, and generated machine-readable packets behind the work can be inspected.
+Aura Knowledge is a public knowledge garden: a collection of essays, patterns, and research notes that are linked and revised over time. We want them to stay readable, traceable, and easy to improve — by people, and by the agents that help us.
 
 ## Start here
 
-- **Read the public site:** https://aura-knowledge.github.io/
-- **Understand the organization:** https://aura-knowledge.github.io/organization/
-- **Follow the roadmap:** https://aura-knowledge.github.io/roadmap/
-- **Browse topic and claim relationships:** https://aura-knowledge.github.io/graph/
-- **Inspect the source repository:** https://github.com/aura-knowledge/aura-knowledge.github.io
+- **Read the garden:** https://aura-knowledge.github.io/
+- **See the roadmap:** https://aura-knowledge.github.io/roadmap/
+- **Browse topics and claims:** https://aura-knowledge.github.io/graph/
 
-## What this organization is for
+## How to contribute
 
-Aura Knowledge explores a publishing model where an article is not just prose. Each public article is paired with a compact agent brief, structured claims, source references, generated discovery feeds, and graph entries.
+You don't need to be an expert and you don't need write access. Start small.
 
-That structure makes the work easier to read, review, revisit, and audit.
+The smoothest path is to open `aura-knowledge/meta` in your agent workspace or chat and talk through your idea. Aura Knowledge is **agent-agnostic** — Claude, ChatGPT, Kimi, Gemini, Copilot, local models, and other assistants can all read the embedded instructions. No plugin or provider switch needed.
 
-## Current repository map
+For example, tell your agent:
+- "I want to propose a knowledge-garden article about…"
+- "I noticed the topic ontology is confusing. Can we suggest a change?"
+- "Explain how articles get published here."
 
-- `aura-knowledge.github.io` is the public site and source repository for the first knowledge garden.
-- Article folders contain the human article, agent brief, and structured artifact together.
-- Generated public files expose discovery indexes, graph data, and compact packets without making humans read machine-oriented files first.
+The agent will ask the same questions as the issue forms, help you remove project-specific details, and submit the issue.
 
-## Operating principles
+You can also fill the forms directly:
 
-- Humans get the clearest path first.
-- Claims should be visible enough to inspect.
-- Sources and provenance matter.
-- Public repositories should explain how the published work is made.
-- Agent-facing files should support automation without becoming the main human interface.
+### Propose a new article
 
-## Contributing
+Have an insight, pattern, or lesson worth writing down?
 
-Start with the repository README and contribution guide:
+1. Open the [article proposal form](https://github.com/aura-knowledge/meta/issues/new?template=article-proposal.yml).
+2. Write a one-paragraph thesis, pick an audience, add tags, and list your claims with public sources.
+3. Remove client names, project codenames, internal URLs, and proprietary details. Include one before/after example of how you abstracted something.
+4. Submit it. A maintainer will review it, and accepted proposals become pull requests in the garden repo.
 
-- https://github.com/aura-knowledge/aura-knowledge.github.io#readme
-- https://github.com/aura-knowledge/aura-knowledge.github.io/blob/main/CONTRIBUTING.md
+### Improve the organization
 
-The core content contract is simple: a public article should preserve both the readable essay and the structured artifact that makes it auditable.
+Want to suggest better tags, structure, workflows, or governance?
 
-## Agents and automation
+1. Open the [organization feedback form](https://github.com/aura-knowledge/meta/issues/new?template=org-feedback.yml).
+2. Describe the current state and what you'd change.
+3. Submit it. We'll triage and discuss.
 
-Agents should use the dedicated machine-readable entry points instead of scraping the human pages first:
+## Before you share anything
 
-- https://aura-knowledge.github.io/agents/
-- https://aura-knowledge.github.io/llms.txt
-- https://aura-knowledge.github.io/agents/index.json
-- https://aura-knowledge.github.io/graph/nodes.json
-- https://aura-knowledge.github.io/graph/edges.json
+Everything here is public. Don't include client names, project codenames, proprietary code, internal URLs, or personal information. If you're unsure whether something is safe, sanitize it in a private draft first or ask a maintainer out of band.
+
+Details: [privacy contract](https://github.com/aura-knowledge/meta/blob/main/docs/privacy-contract.md) · [submission guide](https://github.com/aura-knowledge/meta/blob/main/docs/submission-guide.md) · [contributing guide](https://github.com/aura-knowledge/.github/blob/main/CONTRIBUTING.md)
+
+## Repositories
+
+- [aura-knowledge.github.io](https://github.com/aura-knowledge/aura-knowledge.github.io) — the public site and published garden.
+- [meta](https://github.com/aura-knowledge/meta) — submissions, feedback, schemas, and workflows.
+- [.github](https://github.com/aura-knowledge/.github) — this organization profile.
