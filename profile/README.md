@@ -18,10 +18,13 @@ The smoothest path is to open `aura-knowledge/meta` in your agent workspace or c
 
 For example, tell your agent:
 - "I want to propose a knowledge-garden article about…"
+- "Help me research and structure an Aura Knowledge article."
+- "Review this draft before I publish it."
 - "I noticed the topic ontology is confusing. Can we suggest a change?"
+- "I found a source or article correction we should review."
 - "Explain how articles get published here."
 
-The agent will ask the same questions as the issue forms, help you remove project-specific details, and submit the issue.
+The agent will route the work through the article lifecycle: intake, ideation, research, scoping, structuring, drafting, review, finalization, or correction. It asks the relevant questions, helps remove project-specific details, and submits the right issue when the work is ready.
 
 You can also fill the forms directly:
 
@@ -41,6 +44,13 @@ Want to suggest better tags, structure, workflows, or governance?
 1. Open the [organization feedback form](https://github.com/aura-knowledge/meta/issues/new?template=org-feedback.yml).
 2. Describe the current state and what you'd change.
 3. Submit it. We'll triage and discuss.
+
+### Correct an article or challenge a source
+
+Found something wrong, outdated, weakly sourced, or broken?
+
+- Open the [article erratum form](https://github.com/aura-knowledge/meta/issues/new?template=article-erratum.yml) for factual errors, outdated claims, clarity issues, accessibility issues, or source problems in published articles.
+- Open the [source challenge form](https://github.com/aura-knowledge/meta/issues/new?template=source-challenge.yml) for weak, broken, paywalled, retracted, biased, or superseded sources.
 
 ## Before you share anything
 

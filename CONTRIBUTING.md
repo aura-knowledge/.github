@@ -17,12 +17,16 @@ The instructions are embedded in the repositories themselves — `AGENTS.md` (in
 1. Open `aura-knowledge/meta` in your agent workspace or chat.
 2. Tell the agent what you want to do. For example:
    - "I want to propose a knowledge-garden article about…"
+   - "Help me research and structure an Aura Knowledge article."
+   - "Review this draft before I publish it."
    - "I noticed the topic ontology is confusing. Can we suggest a change?"
+   - "I found a source or article correction we should review."
    - "Explain how articles get published here."
-3. The agent will ask you the questions in the issue forms, help you remove project-specific details, and submit the issue for you.
-4. A maintainer or sibling agent reviews it. Accepted article proposals become pull requests in `aura-knowledge.github.io`.
+3. The agent will route the request to the right lifecycle stage: intake, ideation, research, scoping, structuring, drafting, review, finalization, correction, or source audit.
+4. The agent will ask only the relevant questions, help you remove project-specific details, and submit the right issue when the work is ready.
+5. A maintainer or sibling agent reviews it. Accepted article proposals become pull requests in `aura-knowledge.github.io`.
 
-## Two ways to contribute
+## Common contribution paths
 
 ### Propose an article
 
@@ -54,6 +58,19 @@ Example prompt:
 
 Then it opens the [organization feedback form](https://github.com/aura-knowledge/meta/issues/new?template=org-feedback.yml).
 
+### Correct an article or challenge a source
+
+Found a factual error, outdated claim, weak source, broken link, or better replacement source?
+
+Example prompt:
+
+> "I found a source problem in an Aura Knowledge article. Please help me decide whether this should be an article erratum or source challenge, keep the report public-safe, and file the right issue."
+
+Then it opens one of:
+
+- [article erratum form](https://github.com/aura-knowledge/meta/issues/new?template=article-erratum.yml)
+- [source challenge form](https://github.com/aura-knowledge/meta/issues/new?template=source-challenge.yml)
+
 ## Why we prefer the agent path
 
 Aura Knowledge publishes both human-readable articles and structured records that agents and other tools can read (claim IDs, source references, agent briefs, graph entries). Working with an agent makes it easier to:
@@ -61,6 +78,7 @@ Aura Knowledge publishes both human-readable articles and structured records tha
 - keep the structure consistent,
 - run privacy checks before anything public is filed,
 - route the idea to the right repository and issue form,
+- keep article work moving through the right lifecycle stage,
 - generate or validate the structured side without memorizing schemas.
 
 Manual contributions are still welcome. If you prefer, fill the issue forms directly. The forms ask the same questions an agent would ask.
@@ -83,6 +101,7 @@ Details: [privacy contract](https://github.com/aura-knowledge/meta/blob/main/doc
 If you are writing or configuring an agent that contributes here, see:
 
 - [Agent routing guide](https://github.com/aura-knowledge/meta/blob/main/docs/agent-routing.md)
+- [Article lifecycle router](https://github.com/aura-knowledge/meta/blob/main/capabilities/article-lifecycle-router/SKILL.md)
 - [Routing skill](https://github.com/aura-knowledge/meta/blob/main/skills/knowledge-garden-routing.md)
 - [Route-submission helper script](https://github.com/aura-knowledge/meta/blob/main/scripts/route-submission.py)
 - [Design document](https://github.com/aura-knowledge/meta/blob/main/DESIGN.md)
