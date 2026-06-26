@@ -26,7 +26,7 @@ The instructions are embedded in the repositories themselves — `AGENTS.md` (in
 4. The agent will ask only the relevant questions, help you remove project-specific details, and submit the right issue when the work is ready.
 5. A maintainer or sibling agent reviews it. Accepted article proposals become pull requests in `aura-knowledge.github.io`.
 
-## Two ways to contribute
+## Common contribution paths
 
 ### Propose an article
 
