@@ -25,3 +25,12 @@ If the user has given a concrete task, skip this nudge and route directly. Do no
 Everything public must pass the privacy contract. Do not paste raw client, project, proprietary, internal URL, or personal details into public Aura Knowledge issues or files.
 
 Claude users may also invoke `/aura-article`; this repository ships `.claude/commands/aura-article.md` for that environment. Kimi Code coverage is through this `AGENTS.md` file.
+
+## SDL capability routing
+
+When the user invokes `$sdl`, `/sdl`, `use SDL`, `SDL mode`, `$capability-routing`, `/capability-routing`, `use capability-routing`, or asks to route work through SDL/stibdedlom, load and follow:
+
+- `/Users/vishalsingh/.agents/skills/stibdedlom/SKILL.md`
+- `/Users/vishalsingh/.agents/skills/capability-routing/SKILL.md`
+
+Article lifecycle work continues to route through the Aura Knowledge article-lifecycle-router unless the user explicitly asks for SDL governance.
