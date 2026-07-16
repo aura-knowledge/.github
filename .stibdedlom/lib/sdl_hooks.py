@@ -39,6 +39,8 @@ EXEMPT_PATTERNS = [
     r"^\.stibdedlom/bin/",
     r"^\.stibdedlom/lib/",
     r"^\.stibdedlom/trust/",
+    r"^\.stibdedlom/manifest\.yaml$",
+    r"^\.stibdedlom/invocation-policy\.yaml$",
     r"^\.github/",
     r"^\.githooks/",
     r"^AGENTS\.md$",
@@ -56,7 +58,11 @@ ROUTING_ATTESTATION_SCHEMA_VERSION = "sdl-routing-attestation@2"
 SUPPORTED_ROUTING_ATTESTATION_VERSIONS = frozenset(
     {"sdl-routing-attestation@1", "sdl-routing-attestation@2"}
 )
-CLIENT_MANIFEST_SCHEMA_VERSION = "stibdedlom-client-manifest@1"
+# Client manifest schema versions accepted by the client hooks. New manifests are
+# @2 (current onboarding template); @1 is grandfathered for older client repos.
+SUPPORTED_CLIENT_MANIFEST_SCHEMA_VERSIONS = frozenset(
+    {"stibdedlom-client-manifest@1", "stibdedlom-client-manifest@2"}
+)
 INVOCATION_POLICY_SCHEMA_VERSION = "0.1.0"
 
 
@@ -79,6 +85,17 @@ def current_branch(repo_root: Path) -> str | None:
     result = _run_git(repo_root, "rev-parse", "--abbrev-ref", "HEAD")
     branch = result.stdout.strip()
     return branch if branch and branch != "HEAD" else None
+
+
+def _protected_rerun_allowed() -> bool:
+    """Allow CI re-validation of already-landed commits on protected branches.
+
+    The protected-branch guard exists to stop *local* direct commits/pushes.
+    The SDL governance workflow re-runs the same validators server-side on a
+    commit that has already landed on ``main``; there the guard would fail by
+    design. Set ``SDL_VALIDATION_RERUN=1`` only in those CI re-run steps.
+    """
+    return os.environ.get("SDL_VALIDATION_RERUN") == "1"
 
 
 def is_protected_branch(branch: str) -> bool:
@@ -485,7 +502,7 @@ def validate_commit(
     repo_root = _real(repo_root)
 
     branch = current_branch(repo_root)
-    if branch and is_protected_branch(branch):
+    if branch and is_protected_branch(branch) and not _protected_rerun_allowed():
         return {
             "ok": False,
             "reason": f"direct commits to protected branch '{branch}' are not allowed",
@@ -665,7 +682,7 @@ def validate_push(
 
     if remote_ref:
         branch = remote_ref.replace("refs/heads/", "")
-        if is_protected_branch(branch):
+        if is_protected_branch(branch) and not _protected_rerun_allowed():
             return {
                 "ok": False,
                 "reason": f"direct pushes to protected branch '{branch}' are not allowed",
@@ -1276,7 +1293,7 @@ def validate_schemas(repo_root: Path) -> dict[str, Any]:
         missing = [field for field in required if field not in manifest]
         if missing:
             errors.append({"path": ".stibdedlom/manifest.yaml", "reason": f"missing fields: {missing}"})
-        if manifest.get("schema_version") != CLIENT_MANIFEST_SCHEMA_VERSION:
+        if manifest.get("schema_version") not in SUPPORTED_CLIENT_MANIFEST_SCHEMA_VERSIONS:
             errors.append(
                 {
                     "path": ".stibdedlom/manifest.yaml",
